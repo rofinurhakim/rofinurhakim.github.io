@@ -30,3 +30,103 @@
           </div>
         </div>
       </div>
+
+
+      <div class="col-md-8">
+        <h4>{{weatherData.daily.length}}-day forecast</h4>
+        <div class="accordion accordion-flush" id="accordionFlushExample" *ngIf="weatherData.daily">
+          <div class="accordion-item" *ngFor="let each of weatherData.daily; let i = index">
+            <h2 class="accordion-header" [id]="'flush-heading'+i">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#flush-collapse'+i" aria-expanded="false" [attr.aria-controls]="'flush-collapse'++i">
+                <div class="mt-4 d-flex justify-content-between">
+                  <p class="mb-0 align-self-center">{{each.date_formatted}}</p>
+                  <div class="d-flex ms-4">
+                    <img width="45" height="45" [src]="'http://openweathermap.org/img/wn/'+each.weather[0].icon+'@2x.png'" alt="">
+                    <h6 class="align-self-center ms-2 me-5">{{each.temp.max.toFixed()}} / {{each.temp.min.toFixed()}}°C</h6>
+                    <small class="mb-0 text-muted align-self-center">{{each.weather[0].description}}</small>
+                  </div>
+                </div>
+              </button>
+            </h2>
+            <div [id]="'flush-collapse'+i" class="accordion-collapse collapse" [attr.aria-labelledby]="'flush-heading'+i" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                  <div class="d-flex">
+                    <img width="50" height="50" [src]="'http://openweathermap.org/img/wn/'+each.weather[0].icon+'@2x.png'" alt="">
+                    <div class="ms-3">
+                      <h5 class="mb-0 align-self-center">{{each.weather[0].description}}</h5>
+                      <small class="text-muted align-self-center">The high will be {{each.temp.max.toFixed()}}°C, the low will be {{each.temp.min.toFixed()}}°C.</small>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-3">
+                      <p class="mb-0">Wind: {{each.wind_speed.toFixed(1)}}m/s</p>
+                    </div>
+                    <div class="col-3">
+                      <p class="mb-0">Pressure: {{each.pressure}}hPa</p>
+                    </div>
+                    <div class="col-3">
+                      <p class="mb-0">Humidity: {{each.humidity}}%</p>
+                    </div>
+                    <div class="col-3">
+                      <p class="mb-0">Dew point: {{each.dew_point.toFixed()}}°C</p>
+                    </div>
+                    <div class="col-3">
+                      <p class="mb-0">UV: {{each.uvi.toFixed()}}</p>
+                    </div>
+                    <div class="col-3">
+                      <p class="mb-0">Sunrise: {{each.sunrise_formatted}}</p>
+                    </div>
+                    <div class="col-3">
+                      <p class="mb-0">Sunset: {{each.sunset_formatted}}</p>
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-2">
+                      <p class="mb-0 text-muted">Temprature</p>
+                    </div>
+                    <div class="col-2">
+                      <h6>Morning</h6>
+                      <p class="mb-0">{{each.temp.morn.toFixed()}}°C</p>
+                    </div>
+                    <div class="col-2">
+                      <h6>Afternoon</h6>
+                      <p class="mb-0">{{each.temp.day.toFixed()}}°C</p>
+                    </div>
+                    <div class="col-2">
+                      <h6>Evening</h6>
+                      <p class="mb-0">{{each.temp.eve.toFixed()}}°C</p>
+                    </div>
+                    <div class="col-2">
+                      <h6>Night</h6>
+                      <p class="mb-0">{{each.temp.night.toFixed()}}°C</p>
+                    </div>
+                    <div class="col-2 mb-2">
+                    </div>
+                    <div class="col-2">
+                      <p class="mb-0 text-muted">Feels Like</p>
+                    </div>
+                    <div class="col-2">
+                      <h6>Morning</h6>
+                      <p class="mb-0">{{each.feels_like.morn.toFixed()}}°C</p>
+                    </div>
+                    <div class="col-2">
+                      <h6>Afternoon</h6>
+                      <p class="mb-0">{{each.feels_like.day.toFixed()}}°C</p>
+                    </div>
+                    <div class="col-2">
+                      <h6>Evening</h6>
+                      <p class="mb-0">{{each.feels_like.eve.toFixed()}}°C</p>
+                    </div>
+                    <div class="col-2">
+                      <h6>Night</h6>
+                      <p class="mb-0">{{each.feels_like.night.toFixed()}}°C</p>
+                    </div>
+                    <div class="col-2">
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
