@@ -4,3 +4,29 @@
       <div class="col-md-4">
         <p class="mb-0 text-danger">{{city.date_formatted}}</p>
         <h3>{{city.name}}, {{city.sys?.country}}</h3>
+
+        <div class="mt-4 d-flex">
+          <img width="55" height="55" [src]="'http://openweathermap.org/img/wn/'+city.weather[0].icon+'@2x.png'" alt="">
+          <h1 class="align-self-center ms-2">{{city.main.temp.toFixed()}}°C</h1>
+        </div>
+        <div class="mt-2">
+          <h6>Feels like {{city.main.feels_like.toFixed()}}°C. {{city.weather[0].description}}.</h6>
+          <div class="row">
+            <div class="col-6">
+              <p class="mb-0">Wind: {{city.wind?.speed.toFixed(1)}}m/s</p>
+            </div>
+            <div class="col-6">
+              <p class="mb-0">Pressure: {{city.main?.pressure}}hPa</p>
+            </div>
+            <div class="col-6">
+              <p class="mb-0">Humidity: {{city.main?.humidity}}%</p>
+            </div>
+            <div class="col-6">
+              <p class="mb-0">Dew point: {{weatherData.current?.dew_point.toFixed()}}°C</p>
+            </div>
+            <div class="col-6">
+              <p class="mb-0">Visibility: {{weatherData.current?.visibility/1000}}km</p>
+            </div>
+          </div>
+        </div>
+      </div>
